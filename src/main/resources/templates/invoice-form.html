@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Invoice Form</title>
+</head>
+<body>
+<h1>Invoice Form</h1>
+<form th:action="@{/invoices}" th:object="${invoice}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label>Billing ID:</label>
+    <input type="number" th:field="*{billing.id}" readonly />
+    <label>Date:</label>
+    <input type="datetime-local" th:field="*{invoiceDate}" />
+    <label>Details:</label>
+    <textarea th:field="*{details}"></textarea>
+    <label>Amount:</label>
+    <input type="number" th:field="*{amount}" step="0.01" />
+    <button type="submit">Save</button>
+</form>
+<a th:href="@{/invoices}">Back to List</a>
+</body>
+</html>
